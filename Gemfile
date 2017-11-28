@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'rails_db'
 gem 'bootstrap-sass' #부트스트랩3 버전이다.
 gem 'devise' #회원가입을위한
 gem 'faker'  #dummy

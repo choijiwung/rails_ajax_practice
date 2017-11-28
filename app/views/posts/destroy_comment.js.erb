@@ -1,0 +1,4 @@
+alert("댓글이 삭제됨");
+
+$('#body').val("");
+$('#comment_table tbody').remove( '<tr><td><%= @c.body %></td></tr>');

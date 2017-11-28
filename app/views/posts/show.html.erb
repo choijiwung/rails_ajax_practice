@@ -41,9 +41,25 @@ $(function(){
     <% @post.comments.reverse.each do |p|%>
     <tr>
       <td><%= p.body %></td>
+      <td><%= link_to "삭제",destroy_comment_posts_path ,id: "destroy_comment" %></td>
     </tr>
     <%end%>
   </tbody>
 </table>
+<script>
+$(function(){
+  var form = $('#destroy_comment');
+  form.on('submit', function(e){
+    e.preventDefault();
+    var comment_id = $('this').attr('id');
+    console.log(contents)
+    $.ajax({
+      url: '/comment_id/destroy_comment',
+      method: "delete"
+    });
+  });
+})
+</script>
+
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>

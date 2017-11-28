@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy, :create_comment]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :create_comment, :destroy_comment]
 
   # GET /posts
   # GET /posts.json
@@ -70,6 +70,18 @@ class PostsController < ApplicationController
     
     @c = @post.comments.create(body: params[:body])
   end
+  
+  def destroy_comment
+     @c = @post.comments.find(params[:body])
+     @cn = @post.comments.find(params[:id])
+     @link.destroy
+     respond_to do |format|
+     format.js {render delete_ok.js.erb}
+    end 
+     @c = @post.comments.remove(body: params[:body])
+
+  end 
+   
 
   private
     # Use callbacks to share common setup or constraints between actions.
